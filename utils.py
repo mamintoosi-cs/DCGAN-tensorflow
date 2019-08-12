@@ -80,8 +80,11 @@ def merge(images, size):
                      'must have dimensions: HxW or HxWx3 or HxWx4')
 
 def imsave(images, size, path):
+#  image = np.squeeze(merge(images, size))
+#  return scipy.misc.imsave(path, image) M.Amintoosi
+  import imageio
   image = np.squeeze(merge(images, size))
-  return scipy.misc.imsave(path, image)
+  imageio.imwrite(path, image)
 
 def center_crop(x, crop_h, crop_w,
                 resize_h=64, resize_w=64):
